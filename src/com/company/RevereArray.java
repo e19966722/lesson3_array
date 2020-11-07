@@ -8,19 +8,27 @@ public class RevereArray {
         Scanner sc=new Scanner(System.in);
         System.out.print("array length = ");
         int n = Math.abs(AreSame.CorrectIntegerNumber(sc));
-        int[] reverse_array=new int[n];
-        Random random=new Random();
+        int[] array=new int[n];
         if(n>0) {
-            for (int i = 0; i < n; i++) {
-                reverse_array[i] = random.nextInt(100);
-                System.out.print("arr[" + i + "]=" + reverse_array[i] + " ");
-            }
-            Reverse(reverse_array,n);
+            setRandomArray(array,n);
+            Reverse(array,n);
             System.out.println();
-            ReverseTwo(reverse_array,n);
+            setRandomArray(array,n);
+            System.out.println();
+            ReverseTwo(array,n);
+            System.out.println();
+            setRandomArray(array,n);
+            ReverseBinary(array,n);
         }
         else {System.out.println("a[]");}
 
+    }
+    public static void setRandomArray(int[] array,int n){
+        Random random=new Random();
+        for (int i = 0; i < n; i++) {
+            array[i] = random.nextInt(100);
+            System.out.print("arr[" + i + "]=" + array[i] + " ");
+        }
     }
    public static void Reverse(int[] arr, int n){
         int k;
@@ -33,14 +41,26 @@ public class RevereArray {
         System.out.println();
         for (int i =0;i<n;i++){
             System.out.print("arr["+i+"]="+arr[i]+" ");
-
         }
+        System.out.println();
     }
     public static void ReverseTwo(int[] arr, int n){
         for(int i=n-1;i>=0;i--){
             System.out.print(arr[i] + ",");
         }
 
+    }
+    public static void ReverseBinary(int[] arr, int n){
+        for(int i=0;i<n/2;i++){
+            arr[i]=arr[i]^arr[n-i-1];
+            arr[n-i-1]=arr[i]^arr[n-i-1];
+            arr[i]=arr[i]^arr[n-i-1];
+        }
+        System.out.println();
+        for (int i =0;i<n;i++){
+            System.out.print("arr["+i+"]="+arr[i]+" ");
+
+        }
     }
 
 }
